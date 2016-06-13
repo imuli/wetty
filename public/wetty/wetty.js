@@ -33,8 +33,30 @@ socket.on('connect', function() {
 
         term.setCursorPosition(0, 0);
         term.setCursorVisible(true);
-        term.prefs_.set('ctrl-c-copy', true);
-        term.prefs_.set('ctrl-v-paste', true);
+        term.prefs_.set('background-color', '#000000');
+		term.prefs_.set('color-palette-overrides', [
+				'#1b1b1b',
+				'#b75e03',
+				'#098948',
+				'#548404',
+				'#7e5cff',
+				'#e3057b',
+				'#0580b8',
+				'#b9b9b9',
+				'#3b3b3b',
+				'#eb0107',
+				'#078a0c',
+				'#7a7b00',
+				'#0175f9',
+				'#d205d3',
+				'#068589',
+				'#ffffff',
+		]);
+        term.prefs_.set('foreground-color', '#777777');
+        term.prefs_.set('enable-bold', true);
+        term.prefs_.set('enable-bold-as-bright', false);
+        term.prefs_.set('font-size', 12);
+        term.prefs_.set('scrollbar-visible', false);
         term.prefs_.set('use-default-window-copy', true);
 
         term.runCommandClass(Wetty, document.location.hash.substr(1));
