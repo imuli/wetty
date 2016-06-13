@@ -5621,8 +5621,8 @@ hterm.Keyboard.KeyActions = {
  * Encode a string according to the 'send-encoding' preference.
  */
 hterm.Keyboard.prototype.encode = function(str) {
-  if (this.characterEncoding == 'utf-8')
-    return this.terminal.vt.encodeUTF8(str);
+//  if (this.characterEncoding == 'utf-8')
+//    return this.terminal.vt.encodeUTF8(str);
 
   return str;
 };
@@ -5755,7 +5755,9 @@ hterm.Keyboard.prototype.onKeyDown_ = function(e) {
 
   var keyDef = this.keyMap.keyDefs[e.keyCode];
   if (!keyDef) {
-    console.warn('No definition for keyCode: ' + e.keyCode);
+    // don't warn about unicode keys
+    if (e.keyCode < 0xa0)
+      console.warn('No definition for keyCode: ' + e.keyCode);
     return;
   }
 
